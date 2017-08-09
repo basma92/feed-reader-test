@@ -56,7 +56,7 @@ $(function() {
 describe("menu", function() {
   /*var hidenMenu;
       beforeEach(function(){
-//fill instantiations hereas learned in the lessons
+fill instantiations hereas learned in the lessons
         hidenMenu = document.getElementsByClassName("menu-hidden");
       });*/
 
@@ -65,17 +65,21 @@ describe("menu", function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-it("menu is hidden by default", function(){
+//it("menu is hidden by default", function(){
   /*as i learned in web optimization project getElementsByClassName*/
   /*i will use this var in the next test so i need to declare it out side to be visible to both tests*/
-var hidenMenu =document.getElementsByClassName('menu-hidden');
-  expect(hidenMenu).toContain("menu-hidden");
-});
-/*learned from forums/
-/*it("menu is hidden by default", function(){
-  hidenMenu =document.body;
-  expect(hidenMenu.classList).toContain("menu-hidden");
+/*var hidenMenu =document.getElementsByClassName('menu-hidden');
+  expect(hidenMenu).toBe("menu-hidden");
 });*/
+var hidenMenu =document.body;
+//this didn't work with the getElementsByClassName
+  var menuIcon = $(".menu-icon-link");
+/*learned from forums*/
+it("menu is hidden by default", function(){
+/*  var hidenMenu =document.body;*/
+  expect(hidenMenu.classList).toContain("menu-hidden");
+});
+
 /*it("menu is hidden by default", function(){
   hidenMenu =document.body.className;
   expect(hidenMenu).toBe("menu-hidden");
@@ -88,16 +92,17 @@ var hidenMenu =document.getElementsByClassName('menu-hidden');
           */
           //this was updated using forums
           it("menu changes visibility if menu icon is clicked",function(){
-            var hidenMenu =document.getElementsByClassName("menu-hidden");
-            var menuIcon = document.getElementsByClassName("menu-icon-link");
+          //var hidenMenu =document.getElementsByClassName("menu-hidden");
+          /*var hidenMenu =document.body;
+            var menuIcon = document.getElementsByClassName("menu-icon-link");*/
 
             /*call  menu icon click to test what will happen after clicking*/
             menuIcon.click();
             /*the menu must be visible so menu wontbe hidden*/
-            expect(hidenMenu).not.toContain("menu-hidden");
+            expect(hidenMenu.className).not.toContain("menu-hidden");
             /*call again it must be hidden*/
             menuIcon.click();
-            expect(hidenMenu).toContain("menu-hidden");
+            expect(hidenMenu.className).toContain("menu-hidden");
           });
 });
 
@@ -117,23 +122,25 @@ describe("Initial Entries", function(){
              done();
            });
          });
-it(" async after loadFeed() called there is at least a single .entry element",function(){
+it("after loadFeed called there is at least a single entry element",function(){
 //get the entry elemnt in feed container to measure its length
-  var entry = document.getElementsByClassName("entry");
-  expect(entry.length).toBeGreaterThan(0);
-  done();
+  //var entry = document.getElementsByClassName("entry");
+//var entry = $(".feed").getElementsByClassName("entry").length;
+var entry1 = $(".entry").length;
+  expect(entry1).toBeGreaterThan(0);
+//  done();
 });
 });
     /* TODO: Write a new test suite named "New Feed Selection" */
-describe("New Feed Selection",function(){
+/*describe("New Feed Selection",function(){
   var firstloadedfeed;
-  var secondloadedfeed;
+  var secondloadedfeed;*/
   //where and how to declate these elements to compare their content
          /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         beforeEach(function(done){
+         /*beforeEach(function(done){
            loadFeed(0, function(){
           loadFeed(1,function(){
              done();
@@ -144,5 +151,5 @@ describe("New Feed Selection",function(){
 expect(firstloadedfeed).not.toEqual(secondloadedfeed);
 done();
          });
-         });
+       });*/
 }());
