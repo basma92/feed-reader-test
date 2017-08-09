@@ -95,10 +95,8 @@ it("menu is hidden by default", function(){
           //var hidenMenu =document.getElementsByClassName("menu-hidden");
           /*var hidenMenu =document.body;
             var menuIcon = document.getElementsByClassName("menu-icon-link");*/
-
-            /*call  menu icon click to test what will happen after clicking*/
             menuIcon.click();
-            /*the menu must be visible so menu wontbe hidden*/
+            /*the menu must be visible so menu won't be hidden*/
             expect(hidenMenu.className).not.toContain("menu-hidden");
             /*call again it must be hidden*/
             menuIcon.click();
@@ -122,34 +120,37 @@ describe("Initial Entries", function(){
              done();
            });
          });
-it("after loadFeed called there is at least a single entry element",function(){
+it("after loadFeed called there is at least a single entry element",function(done){
 //get the entry elemnt in feed container to measure its length
   //var entry = document.getElementsByClassName("entry");
-//var entry = $(".feed").getElementsByClassName("entry").length;
+//didn't work >var entry = $(".feed").getElementsByClassName("entry").length;
 var entry1 = $(".entry").length;
   expect(entry1).toBeGreaterThan(0);
-//  done();
+done();
 });
 });
     /* TODO: Write a new test suite named "New Feed Selection" */
-/*describe("New Feed Selection",function(){
+describe("New Feed Selection",function(){
   var firstloadedfeed;
-  var secondloadedfeed;*/
+  var secondloadedfeed;
   //where and how to declate these elements to compare their content
+//i learned this from this projecthttps://github.com/dsbotta/feedreader-testing.git
          /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         /*beforeEach(function(done){
+         beforeEach(function(done){
            loadFeed(0, function(){
+         firstloadedfeed = $(".feed").html();
           loadFeed(1,function(){
+            secondloadedfeed = $(".feed").html();
              done();
               });
            });
          });
-         it("content changes when a new feed is loaded", function(){
+         it("content changes when a new feed is loaded", function(done){
 expect(firstloadedfeed).not.toEqual(secondloadedfeed);
 done();
          });
-       });*/
+       });
 }());
